@@ -1,0 +1,159 @@
+.transaction-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+}
+
+.transaction-filters.compact {
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 16px 20px;
+}
+
+/* Filter Tabs */
+.transaction-filters .filter-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.transaction-filters .filter-tab {
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.transaction-filters .filter-tab:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+}
+
+.transaction-filters .filter-tab.active {
+  background: rgba(0, 200, 150, 0.1);
+  border-color: rgba(0, 200, 150, 0.3);
+  color: var(--accent-primary);
+}
+
+/* Date Controls */
+.filter-date-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-date-controls .dropdown {
+  min-width: 180px;
+}
+
+.transaction-filters .dropdown {
+  min-width: 160px;
+}
+
+.custom-date-inputs {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.date-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-input-group label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.filter-date-input {
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  color-scheme: dark;
+}
+
+.filter-date-input:focus {
+  border-color: var(--accent-primary);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+/* Main Filter Row */
+.transaction-filters .filter-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.transaction-filters .search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+}
+
+.transaction-filters .search-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  background: rgba(0, 200, 150, 0.05);
+  outline: none;
+}
+
+.transaction-filters .search-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Clear Filters Button */
+.transaction-filters .clear-filters-btn {
+  padding: 10px 18px;
+  background: rgba(255, 77, 77, 0.1);
+  border: 1px solid rgba(255, 77, 77, 0.2);
+  border-radius: var(--radius-full);
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.transaction-filters .clear-filters-btn:hover {
+  background: rgba(255, 77, 77, 0.15);
+  border-color: rgba(255, 77, 77, 0.3);
+}
+
+/* Compact mode adjustments */
+.transaction-filters.compact .filter-tab {
+  padding: 8px 14px;
+  font-size: 0.8rem;
+}
+
+.transaction-filters.compact .search-input {
+  padding: 10px 14px;
+  font-size: 0.9rem;
+}
+
+.transaction-filters.compact .filter-row {
+  gap: 10px;
+}
