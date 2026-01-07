@@ -86,6 +86,34 @@
   cursor: not-allowed;
 }
 
+.export-rules-btn,
+.import-rules-btn {
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.export-rules-btn:hover:not(:disabled),
+.import-rules-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.export-rules-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 /* Add Rule Form */
 .add-rule-form {
   display: flex;
@@ -148,7 +176,7 @@
 .rules-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .no-rules {
@@ -173,137 +201,186 @@
   opacity: 0.6;
 }
 
-.rule-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Rule Group - Grouped by Category */
+.rule-group {
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   transition: all var(--transition-fast);
 }
 
-.rule-item:hover {
-  border-color: var(--accent-primary);
-  background: rgba(20, 241, 149, 0.03);
+.rule-group:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
 }
 
-.rule-content {
+.rule-group.editing {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: var(--accent-primary);
+}
+
+.rule-group-header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  flex: 1;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
 }
 
-.rule-keyword {
-  font-family: 'Fira Code', monospace;
-  font-size: 0.85rem;
-  color: var(--accent-primary);
-  background: rgba(20, 241, 149, 0.1);
-  padding: 6px 14px;
+.rule-category-badge {
+  padding: 4px 12px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(20, 241, 149, 0.2);
-}
-
-.rule-arrow {
-  color: var(--text-muted);
-  font-size: 1.2rem;
-}
-
-.rule-category {
-  padding: 6px 16px;
-  border-radius: var(--radius-full);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: white;
   letter-spacing: 0.02em;
 }
 
-.rule-actions {
+.group-actions {
   display: flex;
-  gap: 8px;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
 }
 
-.rule-actions button {
-  padding: 8px 12px;
-  background: transparent;
+.rule-group:hover .group-actions {
+  opacity: 1;
+}
+
+.group-edit-btn,
+.group-delete-btn {
+  background: none;
   border: none;
-  border-radius: var(--radius-md);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  opacity: 0.5;
+  font-size: 0.75rem;
+  opacity: 0.6;
   transition: all var(--transition-fast);
 }
 
-.rule-actions button:hover {
+.group-edit-btn:hover {
   opacity: 1;
   background: rgba(255, 255, 255, 0.1);
 }
 
-.rule-actions .delete-btn:hover {
+.group-delete-btn:hover {
+  opacity: 1;
   background: rgba(255, 107, 107, 0.2);
 }
 
-/* Edit Form */
-.rule-edit-form {
+/* Group Edit Form */
+.group-edit-form {
   display: flex;
-  gap: 12px;
-  flex: 1;
-  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.group-edit-form .edit-row {
+  display: flex;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
-.rule-edit-form .keyword-input,
-.rule-edit-form .category-select {
+.group-edit-form .keyword-input {
+  flex: 1;
   padding: 10px 14px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-md);
   color: var(--text-primary);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
-.rule-edit-form .keyword-input {
-  flex: 1;
-  min-width: 150px;
+.group-edit-form .keyword-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
 }
 
-.edit-actions {
+.group-edit-form .edit-actions {
   display: flex;
   gap: 8px;
 }
 
-.edit-actions button {
-  padding: 10px 18px;
+.group-edit-form .edit-actions button {
+  padding: 8px 16px;
   border: none;
-  border-radius: var(--radius-full);
-  font-size: 0.85rem;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all var(--transition-fast);
 }
 
-.edit-actions .save-btn {
-  background: var(--accent-gradient);
+.group-edit-form .save-btn {
+  background: var(--accent-primary);
   color: var(--bg-primary);
 }
 
-.edit-actions .cancel-btn {
+.group-edit-form .cancel-btn {
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-secondary);
+}
+
+/* Keyword Chips */
+.keywords-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.keyword-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.7rem;
+  color: var(--accent-primary);
+  background: rgba(20, 241, 149, 0.06);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(20, 241, 149, 0.12);
+  transition: all var(--transition-fast);
+}
+
+.keyword-chip:hover {
+  background: rgba(20, 241, 149, 0.1);
+  border-color: rgba(20, 241, 149, 0.25);
+}
+
+.chip-delete {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  padding: 0;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  line-height: 1;
+}
+
+.chip-delete:hover {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
 }
 
 /* Show More Button */
 .auto-label-manager .show-more-btn {
   display: block;
   width: 100%;
-  margin-top: 16px;
-  padding: 12px 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-md);
-  color: var(--text-secondary);
-  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
   font-weight: 500;
   cursor: pointer;
   transition: all var(--transition-normal);
